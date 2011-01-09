@@ -10,7 +10,7 @@ def before_request():
     g.entryservice = EntryService(g.db, TimestampService())
 
 
-@mod.route('/<username>', methods=['GET', 'POST'])
+@mod.route('/user/<username>', methods=['GET', 'POST'])
 def entries(username):
     if not g.userservice.user_exists(username):
         current_app.logger.info(username)
