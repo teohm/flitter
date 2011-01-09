@@ -1,0 +1,18 @@
+<!doctype html>
+<title>Flitter</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}"
+<div class=page>
+    <h1><a href="{{ url_for('general.index') }}">Flitter</a></h1>
+    {% block signin %}
+    {% if not session.user %}
+        Already joined? <a href="{{ url_for('user.login') }}">Sign in </a>
+    {% else %}
+        {{ session.user }} <a href="{{ url_for('user.logout') }}">Sign out</a>
+    {% endif %}
+    {% endblock %}
+    </div>
+    {% for message in get_flashed_messages() %}
+        <div class=flash>{{ message }}</div>
+    {% endfor %}
+    {% block body %}{% endblock %}
+</div>

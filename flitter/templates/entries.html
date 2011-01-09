@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h2>{{ username }}</h2>
+    {% if is_owner %}
+        <form action="" method=post class=add-entry>
+            <dl>
+                <dt>What's in your mind?
+                <dd><textarea name=content rows=5 cols=40></textarea>
+                <dd><input type=submit value="Share it">
+            </dl>
+        </form>
+    {% endif %}
+    <ul class=entries>
+    {% for entry in entries %}
+        <p>{{ entry.content }}
+        <p>when {{ entry.timestamp }}
+    {% else %}
+        <li><em>Unbelievable. No entries here so far</em>
+    {% endfor %}
+    </ul>
+{% endblock %}
