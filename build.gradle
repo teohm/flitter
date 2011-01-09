@@ -1,0 +1,19 @@
+task tarball {
+	ant.tar(
+		compression: 'gzip',
+		destfile: "${project.name}.tar.gz",
+		basedir: '.'
+		excludes: '**'
+	) {
+		tarfileset(
+			dir: 'flitter',
+			prefix: "${project.name}/flitter",
+			excludes: '**/*.pyc'
+		)
+		tarfileset(
+			dir: '.',
+			prefix: project.name,
+			includes: 'flittercfg.py run.py README'
+		)
+	}
+}
