@@ -1,9 +1,12 @@
 
-# Compiled source #
-###################
+# Compiled source
 *.pyc
 
-# IDE #
-#######
+# IDE
 *.komodoproject
 .komodotools
+
+# Generated files
+.gradle
+*.db
+
