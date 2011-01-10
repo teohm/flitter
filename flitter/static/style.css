@@ -5,7 +5,7 @@ body {
 #page {
     background: white;
     border: 15px solid #262626;
-    margin: 2em auto;
+    margin: 2em auto 0 auto;
     padding: 0.8em;
     width: 35em;
     }
@@ -19,16 +19,18 @@ body {
         border: 1px solid #C5C5C5;
         padding: 0.5em;
     }
-    #page .signup-button {
-        
-    }
 #nav {
     font-size: 0.8em;
     margin-bottom: 1em;
     padding: 0.3em;
     text-align: right;
     }
-    
+#footer {
+    font-size: 0.7em;
+    letter-spacing:1px;
+    margin: 0 auto;
+    text-align: center;
+    }
 #entries {
     list-style: none;
     margin: 0;
@@ -55,11 +57,13 @@ body {
     #entry-form .action {
         text-align: right;
     }
+#login-form,
 #signup-form {}
     #signup-form .hint {
         color: #666;
         font-size: 0.9em;
     }
+    #login-form dt,
     #signup-form dt {
         padding-top: 0.8em;
         padding-bottom: 0.2em;
