@@ -1,21 +1,35 @@
 {% extends "layout.html" %}
+{% block heading %} / {{ username }}{% endblock %}
 {% block body %}
-    <h2>{{ username }}</h2>
     {% if is_owner %}
-        <form action="" method=post class=add-entry>
-            <dl>
-                <dt>What's in your mind?
-                <dd><textarea name=content rows=5 cols=40></textarea>
-                <dd><input type=submit value="Share it">
-            </dl>
-        </form>
+    <form action="" method=post id=entry-form>
+        <h2 class=question>What's on your mind?</h2>
+        <textarea name=content id=content rows=5></textarea>
+        <div class=action>
+            <span id=count>&nbsp;</span>
+            <input type=submit value="Share it" id=submit>
+        </div>
+    </form>
     {% endif %}
-    <ul class=entries>
+    <ul id=entries>
     {% for entry in entries %}
-        <p>{{ entry.content }}
-        <p>when {{ entry.timestamp }}
+        <li>
+        <p class=content>{{ entry.content }}</p>
+        <div class=meta>Shared <abbr class="timeago" title="{{ entry.timestamp }}">{{ entry.timestamp }}</abbr></div>
     {% else %}
-        <li><em>Unbelievable. No entries here so far</em>
+        <li><em>yawn..</em>
     {% endfor %}
     </ul>
+{% endblock %}
+{% block script %}
+    <script type="text/javascript" src="{{
+        url_for('static', filename='jquery.timeago.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() { $("abbr.timeago").timeago(); });
+    </script>
+    {% if is_owner %}
+    <script type="text/javascript">var MAX_LENGTH = {{ max_length }};</script>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='add_entry.js') }}"></script>
+    {% endif %}
 {% endblock %}

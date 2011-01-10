@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
-    <h2>Get started!</h2>
-    <a href="{{ url_for('user.signup') }}">Sign Up</a>
+    <h2>
+        Get started!
+        <a class=signup-button href="{{
+            url_for('user.signup') }}">Sign Up</a>
+    </h2>
 {% endblock %}

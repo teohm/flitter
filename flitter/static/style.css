@@ -1,0 +1,66 @@
+body {
+    font-family: sans-serif;
+    background: #EACB00;
+    }
+#page {
+    background: white;
+    border: 15px solid #262626;
+    margin: 2em auto;
+    padding: 0.8em;
+    width: 35em;
+    }
+    #page h2 {
+        color: #262626;
+        font-weight: lighter;
+    }
+    #page .error,
+    #page .flash {
+        background: #F0E68C;
+        border: 1px solid #C5C5C5;
+        padding: 0.5em;
+    }
+    #page .signup-button {
+        
+    }
+#nav {
+    font-size: 0.8em;
+    margin-bottom: 1em;
+    padding: 0.3em;
+    text-align: right;
+    }
+    
+#entries {
+    list-style: none;
+    margin: 0;
+    padding: 1.5em;
+    }
+    #entries li {
+        border-top: 1px solid #C5C5C5;
+        margin: 0.8em 0;
+    }
+    #entries .meta {
+        color: gray;
+        font-size: 0.7em;
+    }
+#entry-form {
+    padding: 0 1.5em;
+    width: 25em;
+    }
+    #entry-form .question {
+        margin-bottom: 0;
+    }
+    #entry-form #content {
+        width: 100%;
+    }
+    #entry-form .action {
+        text-align: right;
+    }
+#signup-form {}
+    #signup-form .hint {
+        color: #666;
+        font-size: 0.9em;
+    }
+    #signup-form dt {
+        padding-top: 0.8em;
+        padding-bottom: 0.2em;
+    }

@@ -21,7 +21,7 @@ def signup():
         if not g.userservice.user_exists(username):
             g.userservice.signup(username, password)
             session['user'] = username
-            flash('Sign up successful!')
+            flash('Welcome, {}.'.format(username))
             return redirect(url_for('entry.entries', username=username))
         else:
             error = 'Username already in used'

@@ -1,13 +1,27 @@
 <!doctype html>
-<title>Flitter</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}"
-<div class=page>
-    <h1><a href="{{ url_for('general.index') }}">Flitter</a></h1>
+<html>
+<head>
+    <title>Flitter</title>
+    <script type="text/javascript" src="{{
+        url_for('static', filename='jquery-1.4.4.min.js') }}"></script>
+    <link rel=stylesheet type=text/css href="{{
+        url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div id=page>
+    <h1 id=heading>
+        <a href="{{ url_for('general.index') }}">Flitter</a>
+        {% block heading %}{% endblock %}
+    </h1>
+    <div id=nav>
     {% block signin %}
-    {% if not session.user %}
-        Already joined? <a href="{{ url_for('user.login') }}">Sign in </a>
+    {% if session.user %}
+        <a href="{{ url_for('entry.entries',
+            username=session.user) }}">{{ session.user }}</a> | <a href="{{
+            url_for('user.logout') }}">Sign out</a>
     {% else %}
-        {{ session.user }} <a href="{{ url_for('user.logout') }}">Sign out</a>
+        Already have account? <a href="{{
+            url_for('user.login') }}">Sign in </a>
     {% endif %}
     {% endblock %}
     </div>
@@ -16,3 +30,6 @@
     {% endfor %}
     {% block body %}{% endblock %}
 </div>
+{% block script %}{% endblock %}
+</body>
+</html>

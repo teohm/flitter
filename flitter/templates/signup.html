@@ -1,14 +1,18 @@
 {% extends "layout.html" %}
 {% block body %}
-    <h2>Welcome to join our community!</h2>
+    <h2>Create new account</h2>
     {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-    <form action="" method=post>
+    <form action="" method=post id=signup-form>
         <dl>
-            <dt>Username:
-            <dd><input type=text name=username>
-            <dt>Password:
-            <dd><input type=password name=password>
-            <dd><input type=submit value="Create my account">
+            <dt>Username: <span class=hint id="username-hint">3-12 numbers or alphabets</span>
+            <dd><input type=text name=username id=username maxlength=12>
+            <dt>Password: <span class=hint id="password-hint">6-16 tricky characters</span>
+            <dd><input type=password name=password id=password maxlength=16>
+            <dd><input type=submit value="Create my account" id=submit>
         </dl>
     </form>
+{% endblock %}
+{% block script %}
+<script type="text/javascript"
+        src="{{ url_for('static', filename='signup.js') }}"></script>
 {% endblock %}

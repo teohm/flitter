@@ -23,5 +23,6 @@ def entries(username):
     is_owner = session.get('user', None) == username
     
     return render_template('entries.html', entries=entries,
+                           max_length=current_app.config['ENTRY_MAX_LENGTH'],
                            username=username, is_owner=is_owner)
     
