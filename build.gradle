@@ -1,8 +1,10 @@
+defaultTasks 'tarball'
+
 task tarball {
 	ant.tar(
 		compression: 'gzip',
 		destfile: "${project.name}.tar.gz",
-		basedir: '.'
+		basedir: '.',
 		excludes: '**'
 	) {
 		tarfileset(
