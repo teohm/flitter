@@ -86,6 +86,17 @@ class EntryServiceTests(unittest.TestCase):
         self.assertEqual(len(list), 1)
         entry = list[0]
         self.assertEqual(entry['content'], 'content')
+        
+    def test_add_entry_returned_object(self):
+        #when
+        entry = self.s.add_entry('teohm', 'content', '2010-01-01T00:00:00Z')
+        entry2 = self.s.add_entry('teohm', 'content')
+        
+        #then
+        assert entry['content'] == 'content'
+        assert entry['timestamp'] == '2010-01-01T00:00:00Z'
+        assert entry2['content'] == 'content'
+        assert entry2['timestamp'] is not None
     
     def test_list_no_entry(self):
         #when

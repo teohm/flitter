@@ -1,35 +1,41 @@
 {% extends "layout.html" %}
+
+{% block title %} / {{ username }}{% endblock %}
 {% block heading %} / {{ username }}{% endblock %}
+
 {% block body %}
     {% if is_owner %}
-    <form action="" method=post id=entry-form>
-        <h2 class=question>What's on your mind?</h2>
-        <textarea name=content id=content rows=5></textarea>
-        <div class=action>
-            <span id=count>&nbsp;</span>
-            <input type=submit value="Share it" id=submit>
+    <form action="{{ url_for('entry.entries', username=username)
+        }}" method="post" id="entry-form">
+        <h2 class="question">What's on your mind?</h2>
+        <textarea name="content" id="content" rows="5"></textarea>
+        <div class="action">
+            <span id="count">&nbsp;</span>
+            <input type="submit" value="Share it" id="add">
         </div>
     </form>
     {% endif %}
-    <ul id=entries>
-    {% for entry in entries %}
-        <li>
-        <p class=content>{{ entry.content }}</p>
-        <div class=meta>Shared <abbr class="timeago" title="{{ entry.timestamp }}">{{ entry.timestamp }}</abbr></div>
-    {% else %}
-        <li><em>yawn..</em>
-    {% endfor %}
+    
+    {% if entries %}
+    <ul id="entries">
+        {% block entrylist %}
+        {% endblock %}
     </ul>
+    {% else %}
+    <ul id="entries">
+        <li></li>
+    </ul>
+    {% endif %}
 {% endblock %}
+
 {% block script %}
     <script type="text/javascript" src="{{
-        url_for('static', filename='jquery.timeago.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function() { $("abbr.timeago").timeago(); });
-    </script>
+            url_for('.static', filename='jquery.timeago.js') }}"></script>
+    <script type="text/javascript" src="{{
+            url_for('.static', filename='entries.js') }}"></script>
     {% if is_owner %}
     <script type="text/javascript">var MAX_LENGTH = {{ max_length }};</script>
-    <script type="text/javascript"
-            src="{{ url_for('static', filename='add_entry.js') }}"></script>
+    <script type="text/javascript" src="{{
+            url_for('.static', filename='add_entry.js') }}"></script>
     {% endif %}
 {% endblock %}

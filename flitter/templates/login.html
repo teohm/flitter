@@ -1,17 +1,20 @@
 {% extends "layout.html" %}
-{% block signin %}
-{% endblock %}
+
+{% block title %} - Sign In {% endblock %}
+{% block signin %}{% endblock %}
 
 {% block body %}
     <h2>Sign in</h2>
-    {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-    <form action="" method=post id=login-form>
+    {% if error %}
+    <p class="error>"<strong>Error:</strong> {{ error }}
+    {% endif %}
+    <form action="" method="post" id="login-form">
         <dl>
-            <dt>Username:
-            <dd><input type=text name=username>
-            <dt>Password:
-            <dd><input type=password name=password>
-            <dd><input type=submit value="Sign in">
+            <dt>Username:</dt>
+            <dd><input type=text name=username></dd>
+            <dt>Password:</dt>
+            <dd><input type="password" name="password"></dd>
+            <dd><input type="submit" value="Sign in"></dd>            
         </dl>
     </form>
 {% endblock %}

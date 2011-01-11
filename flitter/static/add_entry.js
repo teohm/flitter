@@ -1,6 +1,8 @@
 $(document).ready(function() {
-    var content = $('#content'),
-        submit = $('#submit'),
+    var entries = $('#entries')
+        form = $('#entry-form'),
+        content = $('#content'),
+        submit = $('#add'),
         count = $('#count');
     
     var update_count = function(diff) {
@@ -9,19 +11,19 @@ $(document).ready(function() {
     };
     
     var validate_content = function() {
-        var disable = function(el) { el.attr('disabled', 'disabled'); },
-            enable  = function(el) { el.removeAttr('disabled'); };
-        
         var content_val = content.val(),
             diff = MAX_LENGTH - content_val.length,
             within_limit = diff >= 0,
             not_blank = $.trim(content_val).length != 0;
         
+        var disable = function(el) { el.attr('disabled', 'disabled'); },
+            enable  = function(el) { el.removeAttr('disabled'); },
+            content_valid = function() {
+                return within_limit && not_blank;
+            };
+        
         update_count( diff );
         
-        var content_valid = function() {
-            return within_limit && not_blank;
-        }
         if (content_valid()) {
             enable(submit);
         } else {
@@ -35,6 +37,29 @@ $(document).ready(function() {
         });
         validate_content();
     };
+    
+    var setup_ajax_submit = function() {
+        var reset_form = function() {
+                content.val('');
+                validate_content();
+            },
+            show_entry = function(data) {
+                entries.prepend(data);
+                $(".timeago").timeago();  
+            };
+            
+        form.submit(function(ev) {
+            ev.preventDefault();
+            $.ajax({
+                url: form.attr('action'),
+                type: form.attr('method'),
+                data: form.serialize(),
+                success: function(data) { show_entry(data); }
+            });
+            reset_form();
+        });
+    };
 
     setup_validation();
+    setup_ajax_submit();
 });

@@ -1,4 +1,4 @@
 import flitter
 
 app = flitter.create_app()
-app.run(debug=True)
+app.run()

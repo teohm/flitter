@@ -4,12 +4,10 @@ from ..services import UserService, SecureHashService
 
 mod = Module(__name__)
 
-
 @mod.before_app_request
 def before_app_request():
     g.userservice = UserService(g.db, SecureHashService(
-        current_app.config['SECRET_KEY'], 'sha256'))
-
+                                        current_app.config['SECRET_KEY']))
 
 @mod.route('/welcome', methods=['GET', 'POST'])
 def signup():

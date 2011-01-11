@@ -1,1 +1,20 @@
-TBD
+Flitter
+=======
+
+To run:
+    python run.py   # goto http://localhost:5000/flitter
+    
+To configure, edit flittercfg.py and re-run.
+
+To fork:
+    git clone git://github.com/teohm/flitter
+
+
+Implemented features
+--------------------
+ * User registration (standard user+password)
+ * Password stored as salted sha256 hash
+ * Create new post after user login
+ * Limit post entry's length, configurable in flittercfg.py
+ * View public user posts
+ * Endless scroll pagination, configrable in flittercfg.py

@@ -1,0 +1,20 @@
+{% if not is_ajax %}
+    {% extends "entries.html" %}
+{% endif %}
+
+{% block entrylist %}
+{% for entry in entries %}
+    <li>
+        <p class="content">{{ entry.content }}
+        <div class="meta">Shared <abbr class="timeago" title="{{
+             entry.timestamp }}">{{
+             entry.timestamp }}</abbr></div>
+        </p>
+    </li>
+{% endfor %}
+{% if next_link %}
+    <li id="next-link">
+        <p>more items..<a rel="next" href="{{ next_link }}"/></p>
+    </li>
+{% endif %}
+{% endblock %}

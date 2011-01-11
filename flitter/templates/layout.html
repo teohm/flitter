@@ -1,27 +1,27 @@
 <!doctype html>
 <html>
 <head>
-    <title>Flitter</title>
+    <title>Flitter {% block title %}{% endblock %}</title>
     <script type="text/javascript" src="{{
-        url_for('static', filename='jquery-1.4.4.min.js') }}"></script>
+            url_for('.static', filename='jquery-1.4.4.min.js') }}"></script>
     <link rel=stylesheet type=text/css href="{{
-        url_for('static', filename='style.css') }}">
+          url_for('.static', filename='style.css') }}">
 </head>
 <body>
-<div id=page>
-    <h1 id=heading>
+<div id="page">
+    <h1 id="heading">
         <a href="{{ url_for('general.index') }}">Flitter</a>
         {% block heading %}{% endblock %}
     </h1>
-    <div id=nav>
+    <div id="nav">
     {% block signin %}
     {% if session.user %}
         <a href="{{ url_for('entry.entries',
             username=session.user) }}">{{ session.user }}</a> | <a href="{{
             url_for('user.logout') }}">Sign out</a>
     {% else %}
-        Already have account? <a href="{{
-            url_for('user.login') }}">Sign in </a>
+        Already have an account? <a href="{{
+            url_for('user.login') }}">Sign in</a>
     {% endif %}
     {% endblock %}
     </div>
@@ -30,8 +30,9 @@
     {% endfor %}
     {% block body %}{% endblock %}
 </div>
-<div id=footer>
-    fork me @ <a href="https://github.com/teohm/flitter/">github.com/teohm/flitter</a>
+<div id="footer">
+    fork me @ <a
+    href="https://github.com/teohm/flitter/">github.com/teohm/flitter</a>
 </div>
 {% block script %}{% endblock %}
 </body>

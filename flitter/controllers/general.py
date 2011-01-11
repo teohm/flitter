@@ -3,7 +3,6 @@ from flask import Module, render_template, request, g, flash, session, \
 
 mod = Module(__name__)
 
-
 @mod.route('/')
 def index():
     return render_template('index.html')

@@ -31,6 +31,8 @@ body {
     margin: 0 auto;
     text-align: center;
     }
+
+
 #entries {
     list-style: none;
     margin: 0;
@@ -39,6 +41,10 @@ body {
     #entries li {
         border-top: 1px solid #C5C5C5;
         margin: 0.8em 0;
+    }
+    #entries li#next-link {
+        color: gray;
+        display: none;
     }
     #entries .meta {
         color: gray;
@@ -57,6 +63,8 @@ body {
     #entry-form .action {
         text-align: right;
     }
+
+
 #login-form,
 #signup-form {}
     #signup-form .hint {

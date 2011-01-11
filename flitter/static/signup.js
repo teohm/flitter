@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var username = $('#username'),
         password = $('#password'),
-        submit = $('#submit'),
+        submit = $('#add'),
         username_hint = $('#username-hint'),
         password_hint = $('#password-hint');
         
@@ -10,7 +10,7 @@ $(document).ready(function() {
                 return /^[0-9a-zA-Z]{3,12}$/.test(username.val());
             },
             password_valid = function() {
-               return /^.{6,16}$/.test(password.val());
+                return /^.{6,16}$/.test(password.val());
             };
         var disable = function(el) { el.attr('disabled', 'disabled'); },
             enable  = function(el) { el.removeAttr('disabled'); };
@@ -24,7 +24,7 @@ $(document).ready(function() {
     
     var setup_validation = function() {    
         $.each([username, password], function(idx, input) {
-            input.bind('change keypress', function() {
+            input.bind('change keyup', function() {
                 validate_signup();
             });
         });
