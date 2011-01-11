@@ -5,14 +5,14 @@ $(document).ready(function() {
         submit = $('#add'),
         count = $('#count');
     
-    var update_count = function(diff) {
+    var update_char_count = function(diff) {
         count.html(diff);
         count.css('color', (diff < 0) ? 'red' : 'gray');
     };
     
     var validate_content = function() {
         var content_val = content.val(),
-            diff = MAX_LENGTH - content_val.length,
+            diff = FLTR.MAX_LENGTH - content_val.length,
             within_limit = diff >= 0,
             not_blank = $.trim(content_val).length != 0;
         
@@ -22,7 +22,7 @@ $(document).ready(function() {
                 return within_limit && not_blank;
             };
         
-        update_count( diff );
+        update_char_count( diff );
         
         if (content_valid()) {
             enable(submit);
@@ -39,13 +39,16 @@ $(document).ready(function() {
     };
     
     var setup_ajax_submit = function() {
-        var reset_form = function() {
+        var update_timestamps = function() {
+                $(".timeago").timeago();
+            },
+            reset_form = function() {
                 content.val('');
                 validate_content();
             },
             show_entry = function(data) {
                 entries.prepend(data);
-                $(".timeago").timeago();  
+                update_timestamps();
             };
             
         form.submit(function(ev) {

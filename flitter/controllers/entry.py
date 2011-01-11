@@ -32,9 +32,9 @@ def show_entries(username, limit, offset, is_ajax):
     return render_template('entrylist.html',
         entries = entries,
         username = username,
+        is_owner = session.get('user', None) == username,
         is_ajax = is_ajax,
         next_link = gen_next_link(username, entries, limit, offset),
-        is_owner = session.get('user', None) == username,
         max_length = current_app.config['ENTRY_MAX_LENGTH']      
     )
 

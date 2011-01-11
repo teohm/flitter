@@ -10,7 +10,9 @@ $(document).ready(function() {
                 return /^[0-9a-zA-Z]{3,12}$/.test(username.val());
             },
             password_valid = function() {
-                return /^.{6,16}$/.test(password.val());
+                var str = password.val();
+                return str.length >= 6 &&
+                       str.length <= 16;
             };
         var disable = function(el) { el.attr('disabled', 'disabled'); },
             enable  = function(el) { el.removeAttr('disabled'); };

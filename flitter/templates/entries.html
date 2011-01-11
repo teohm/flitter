@@ -34,7 +34,7 @@
     <script type="text/javascript" src="{{
             url_for('.static', filename='entries.js') }}"></script>
     {% if is_owner %}
-    <script type="text/javascript">var MAX_LENGTH = {{ max_length }};</script>
+    <script type="text/javascript">var FLTR={ MAX_LENGTH:{{ max_length }} };</script>
     <script type="text/javascript" src="{{
             url_for('.static', filename='add_entry.js') }}"></script>
     {% endif %}
