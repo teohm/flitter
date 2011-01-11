@@ -1,6 +1,6 @@
 body {
-    font-family: sans-serif;
     background: #EACB00;
+    font-family: sans-serif;
     }
 #page {
     background: white;
@@ -41,15 +41,18 @@ body {
     #entries li {
         border-top: 1px solid #C5C5C5;
         margin: 0.8em 0;
-    }
+        }
     #entries li#next-link {
         color: gray;
         display: none;
-    }
-    #entries .meta {
-        color: gray;
-        font-size: 0.7em;
-    }
+        }
+        #entries li .content {
+            word-wrap: break-word;
+        }
+        #entries li .meta {
+            color: gray;
+            font-size: 0.7em;
+        }
 #entry-form {
     padding: 0 1.5em;
     width: 25em;
