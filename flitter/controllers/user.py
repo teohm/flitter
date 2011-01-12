@@ -11,6 +11,9 @@ def before_app_request():
 
 @mod.route('/welcome', methods=['GET', 'POST'])
 def signup():
+    if is_authenticated():
+        return redirect_to_user_page()
+        
     error = None
     if request.method == 'POST':
         username = request.form['username']
@@ -36,6 +39,9 @@ def logout():
     
 @mod.route('/login', methods=['GET', 'POST'])
 def login():
+    if is_authenticated():
+        return redirect_to_user_page()
+        
     error = None
     if request.method == 'POST':
         username = request.form['username']
@@ -49,3 +55,16 @@ def login():
     
     return render_template('login.html', error=error)
     
+
+
+def is_authenticated():
+    """Returns true if user session is autheticated, otherwise False."""
+    return session.has_key('user')
+    
+def redirect_to_user_page():
+    """Redirects to user entry page.
+    
+    It expects user session is authenticated, and
+    session['user'] contains username.
+    """
+    return redirect(url_for('entry.entries', username=session['user']))
