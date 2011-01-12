@@ -15,7 +15,7 @@ task tarball {
 		tarfileset(
 			dir: '.',
 			prefix: project.name,
-			includes: 'flittercfg.py run.py README'
+			includes: 'flittercfg.py run.py README CHANGELOG'
 		)
 	}
 }
