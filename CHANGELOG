@@ -1,4 +1,4 @@
-2010-12-01 teohm <teohuiming@gmail.com>
+2011-01-12 teohm <teohuiming@gmail.com>
 
     * Fixed issue: authenticated user should not access signup page.
         Given user is authenticated
