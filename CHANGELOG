@@ -1,0 +1,10 @@
+2010-12-01 teohm <teohuiming@gmail.com>
+
+    * Fixed issue: authenticated user should not access signup page.
+        Given user is authenticated
+        When try to access login, signup, index page
+        Redirects user to user's entry page.
+    
+    * Fixed issue: Invalid string format syntax: 'Welcome, {}'
+        Replaced {} with {0}. The former new syntax only works in Python 2.7,
+        and will throw error in earlier Python version.
