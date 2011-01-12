@@ -1,0 +1,10 @@
+Ideas to try out
+----------------
+ * Implement javascript progressive enhancemnt on: endless scroll, add entry.
+   http://en.wikipedia.org/wiki/Progressive_enhancement
+ * Add server-side input validation
+ * Use facebook connect for auth
+
+Refactoring
+-----------
+ * Extract session functions into separate class (put in controllers/session.py?)
